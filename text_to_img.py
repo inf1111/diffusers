@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #https://huggingface.co/docs/diffusers/quicktour
-#print("zzz111")
+
 from diffusers import DiffusionPipeline
 
 pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
