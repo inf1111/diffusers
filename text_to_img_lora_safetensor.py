@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 #https://github.com/huggingface/diffusers/issues/2829
 #https://github.com/huggingface/diffusers/issues/3064
+#чето еще про конвертацию 3 форматов которые принимает проект:
+#https://www.reddit.com/r/StableDiffusion/comments/10h2ltj/diffusers_ckpt_and_safetensors/
+#https://github.com/haofanwang/Lora-for-Diffusers/blob/18adfa4da0afec46679eb567d5a3690fd6a4ce9c/format_convert.py#L154-L161
+#https://github.com/huggingface/diffusers/issues/3064
+#https://github.com/huggingface/diffusers/issues/2829
+#https://github.com/huggingface/diffusers/issues/2105
 
 from diffusers import StableDiffusionPipeline
 import torch
-
-#import gc
-#gc.collect()
-#torch.cuda.empty_cache()
-
-#import os
-#os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
 
 import safetensors
 from collections import defaultdict
@@ -78,8 +77,5 @@ pipe = load_lora_weights(pipe, "/home/ubuntu/diffusers/edgMarquise.safetensors",
 
 imgs = pipe(prompt = "A girl with blue eyes EDGMARQUISE HAIRSTYLE", num_images_per_prompt=5).images;
 
-#imgs[0].save("pokemon-xxx-0.png")
-#imgs[1].save("pokemon-xxx-1.png")
-#imgs[2].save("pokemon-xxx-2.png")
 for index, item in enumerate(imgs):
    item.save(f"SIMPLE-{index}.png")
